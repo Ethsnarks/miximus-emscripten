@@ -1,0 +1,5 @@
+build/
+build.emscripten/
+installroot/
+gmp-*
+*.zip

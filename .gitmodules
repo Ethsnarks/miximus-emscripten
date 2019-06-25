@@ -1,0 +1,6 @@
+[submodule "ethsnarks-miximus"]
+	path = ethsnarks-miximus
+	url = git@github.com:HarryR/ethsnarks-miximus.git
+[submodule "emsdk"]
+	path = emsdk
+	url = https://github.com/emscripten-core/emsdk.git

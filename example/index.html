@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Miximu WASM example</title>
+		<script src="miximus_cli.js" type="text/javascript"></script>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var test_data = {"root": "0x23c72a5b89aa7a957b8572ac31db4de1fe1489db8f49b4266b0d9c2a6584add2", "exthash": "0x235598a3394fd12cddbeca55716618b205c2d7d73652a0475b8ccc7db6512a1c", "secret": "0x1b11d1b9fd5736f07050f90a7a8df4b5ea860b62703c3a066375e90eb9b5724d", "address": 2, "path": ["0x17833f95bea2c44d5b98864eacb67c4aa45f5750cc26c034d2ce118aefc7f942", "0x18b673c2165f976f7ed2acd27593f0240c5ab7cda5a007b6d72a5789692bfb97", "0xaaf4c1f8c818c739b1ba6b1b2c09b4b90717da5038042be8ed43ac0ce3f371a", "0x222ef2884a14feeba44793cfb211970a3d116cbe65cf2694054ec69f4015d39c", "0x8554ef32b4a851765d3162c5e54eb97b01fcdd3c9e9592d7a3eafdaa123403e", "0x1e2bf81e1ace26df94fe8d049a25b0612e35a1fcae2f75dea45c3a94ef6cb669", "0x231b07146f4ee75bdd947481b16162a65a5b4baf8c85dde4470dc3c4c4a5b118", "0x15b5181133732369771c10c835330bf72bafc36f5220c396f55645275b733349", "0x1183b7a0d985f0d1ed7bc1eddf175b113b1d4938e48d8d74a5a81d6dadb213a7", "0x62abb9b25e1d325c5befa5b6aff18b688fdd4ef7ae1b46fcb3d7f991134ec16", "0x2395ed4209212a5ba691b12e87710080d26b189df3b77db84acb5bd34f29f06", "0x1a76492f398d15e4176dbed49010d6383c05e181fea2490ad5bb3b4e1350435d", "0xbd0d1e5853bc1f219596ab7fb759fba1c957ec3d1cfb0411ca0f23e2679df42", "0x1f3573ad2b248e5a71fe725d3a61511219c5945a8ad8207079c68aa0168f2b8b", "0x2144a90e5da8b039e17a97a5262f0eb3868554d5daee6b92654e85b4f61c6cf4", "0x1ba973eb3b171999a767632d1efcf75cda8f12350f4f7222122824cfe637b8aa", "0x7564f5ac90a51d27de52292cbf1de6ff191bff4e036b699e3e19595a1541239", "0xa32a0c1717de6446539cbfd522a8c58fa01dcce8a8d52f8ef1cc98b28840e1", "0x1ea7e066994187e0b6458ec1f467e62c8628b637dd7c14e9ea5c1c4557aadcad", "0x20f69d52b4c3d7e9992a5bb7bbe5c98b291915c4d83d5e91e4ee3836d8ea90f4", "0x1dc8a62c2424f01a7598c03d2229ee27508db8f912a43f8d4746e7297a4a2dd4", "0xf7bb50765c3cc12321a13f7d11becd500b16d44fb808cb3538e7664c40661a9", "0x238b4823d9d88680299bff8e3b6a4102a85e0ad39980564466068f28a953c24b", "0x803c7a756c058f627f02384fdb45daa52aebe16d211ccc560890f2794587e09", "0x6e47ff4ed984ed1662c3bd85017a5fac5bcf71af6b2e517b19b8531001cf388", "0x237d03980fa0c2bacdccb449a818a0b7130cb29442231b77303d6de37e20c404", "0x61fdcd0ab84d6913f40dbf309a699b57eab21ee4ac96cec019b68d76aa623b7", "0x2529f0198d72428bc3f36f731ad197563d9baa60328511dfcaddffb1ddfbdf05", "0x1adea4fa6edd606522fff93a17a4475b382f3e13e2e270e987ee0f8c828e7537"]};
+
+			Module['preRun'] = function () {
+				FS.createPreloadedFile("/", "miximus.pk.raw", "miximus.pk.raw", true, false);
+			};
+
+			Module['onRuntimeInitialized'] = function () {
+			    var begin_prove = new Date().getTime() / 1000;
+				var miximus_prove_json = Module.cwrap('miximus_prove_json', 'string', ['string', 'string']);
+				var result = miximus_prove_json('/miximus.pk.raw', JSON.stringify(test_data));
+				var end_prove = new Date().getTime() / 1000;
+				alert(end_prove - begin_prove);
+				alert(result);
+			};
+		</script>
+	</body>
+</html>
