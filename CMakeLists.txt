@@ -5,12 +5,13 @@ project(miximus-emscripten)
 set(CMAKE_VERBOSE_MAKEFILE on)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build.emscripten)
 
-set(CMAKE_CXX_FLAGS "-fno-rtti -O3 --llvm-lto 1 --std=c++11 -s ALLOW_MEMORY_GROWTH=1 -s DISABLE_EXCEPTION_CATCHING=0")
+set(CMAKE_CXX_FLAGS "-fno-rtti -O3 --llvm-lto 1 --std=c++11 -s ALLOW_MEMORY_GROWTH=1")
 
 set(CMAKE_PREFIX_PATH ${CMAKE_CURRENT_SOURCE_DIR}/installroot)
 
 set(PKG_CONFIG_USE_CMAKE_PREFIX_PATH on)
 
+set(ETHSNARKS_NO_THREADS ON)
 set(USE_ASM OFF)
 
 set(GMP_LIBRARY ${CMAKE_CURRENT_SOURCE_DIR}/installroot/lib/libgmp.a)

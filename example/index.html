@@ -16,6 +16,8 @@
 			Module['onRuntimeInitialized'] = function () {
 			    var begin_prove = new Date().getTime() / 1000;
 				var miximus_prove_json = Module.cwrap('miximus_prove_json', 'string', ['string', 'string']);
+
+				alert('Start Proving');
 				var result = miximus_prove_json('/miximus.pk.raw', JSON.stringify(test_data));
 				var end_prove = new Date().getTime() / 1000;
 				alert(end_prove - begin_prove);

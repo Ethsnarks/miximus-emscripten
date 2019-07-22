@@ -56,7 +56,6 @@ $(FASTCOMP)/emscripten/emcc:
 ethsnarks-patches:
 	cd $(ETHSNARKS_DIR)/depends/libsnark/depends/libff && patch -Ntp1 < $(ROOT_DIR)/libff.patch || true
 	cd $(ETHSNARKS_DIR)/depends/libsnark/depends/libfqfft/depends/libff && patch -Ntp1 < $(ROOT_DIR)/libff.patch || true
-	cd $(ETHSNARKS_DIR)/depends/libsnark/depends/libfqfft && patch -Ntp1 < $(ROOT_DIR)/libqfft.patch || true
 
 miximus: build.emscripten/miximus_cli.js
 	cp build.emscripten/miximus_cli.* example
